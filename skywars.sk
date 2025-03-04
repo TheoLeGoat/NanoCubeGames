@@ -1,0 +1,1537 @@
+
+options:
+	plugin-version: 2.6.9
+	
+	
+	
+# This Skript currently supports Minecraft versions 1.12 and 1.11, for some people 1.8 works so give it a try on 1.8 if you want (1.8 is currently not fully supported since it's not guaranteed to work 100%)
+# ● SETTINGS ●
+#	
+	
+	prefix: &bNanoSkyWars
+	ingamecommands: "leave" or "lobby" or "hub" or "msg" or "tell" or "w" or "sw" or "helpop" or "server" or "help"	
+	glassid: stained_glass:13
+	winnerhologram: true	
+	explosioneffect: false
+	usebowdamagemsg: true		
+	
+#Timers
+	waitingtime: 30      #cage time (In seconds)
+	gameminutes: 10      #in game max time (In minutes)
+	refillminute: 3      # will refill chests after 3 minutes from game start. (In minutes) 	
+	fullarenacooldown: 5 #seconds before arena starts when is full (minimum "5") (In seconds)
+	
+#Points		
+	pointsperkill: 5
+	pointsperwin: 20
+	losepoints: 0
+	allownegativepoints: false
+	
+#Chat	
+	specchat: "&c&lSPEC &c&l» &8&l[&e%{sw.stats.points.%uuid of player%}%&8&l] %colored player's prefix% &7%player% &8&l» &7 %message%"
+	normalchat: "&8&l[&e%{sw.stats.points.%uuid of player%}%&8&l] %colored player's prefix% &7%player% &8&l» &7 %message%"
+	
+	
+	
+	
+	
+#
+# ● SCOREBOARD ●
+#	
+
+	websitename: &b&lnanocubegames.fr
+
+
+	
+#
+# ● GAME STAGE NAMES ●
+#	
+	
+	waiting: &7&lAttente
+	ingame: &cIn-Game
+	starting: &7&lDémarrage
+	refill: &aRefill
+	restarting: &c&lFin
+	full: &c&lCOMPLET
+	
+	
+#
+# ● TITLES ●
+#	
+
+	winnertitle: &6&lVICTOIRE!
+	winnersubtitle: &7VOUS ETES LE DERNIER SURVIVANT GG!
+	deathtitle: &c&lTU ES MORT 
+	deathsubtitle: &7Tu restes en spec pendant la fin de la game!
+	chestrefilltile: &6&lCoffres remplis !
+	dragonspawntitle: &5&lLE DRAGON A SPAWN FAITES GAFFE !
+	startingsubtitle: &ePréparez-vous à souffir pour cliquer...
+	
+
+		
+# ● MESSAGES ●	
+	
+	startmessage: &a&lLA GAME A DEMARRE GOOD LUCK FOR ALL !
+	
+	joinmessage: &6&l» &5%colored player's prefix% &7%player% &7à rejoint !
+
+	leavemessage: &3&l» %colored player's prefix% &7%player% &7à quitté !
+	
+	hasbeenkilled: &6&l» %colored {_victim}'s prefix% &7%{_victim}% &cà été tué par %colored {_attacker}'s prefix% &7%{_attacker}%
+	
+	unknownkilled: &6&l» %colored {_victim}'s prefix% &7%{_victim}% &7est mort.
+	
+	suicide: &6&l» %colored victim's prefix% &7%victim% &cc'est suicidé. 
+
+	playersleft: &7joueurs restants
+	
+	chestrefill: &7&lLes coffres se sont remplis.
+	
+	minutesremain: &5&lMinutes avant que la game se finisse.
+	
+	notinarenaregion: &7You are not in arena region, you will start to get &c&ldamage&7!
+	
+	bowdamage: &7%victim% est maintenant à &c%health of victim% ♥
+	
+	lobbylocation: &c&lSETUP &e&l» &7Lobby location successfully set!
+	
+	dragonspawnmessage: &5&lLE DRAGON A SPAWN!
+	
+	dragonname: &5RUNNNN!
+	
+	winnerhologramtext: &7&lET LE GAGNANT EST : %colored {_p}'s prefix% &7%{_p}% &c&l! 
+	
+	#It's recommended to not change this!!!
+	errormessage: &8&l● &3Error 5.0.2
+	
+	noarenasavailable: &7No arenas available for now!
+	
+	cannotchangelobbylocation: &cYou can't change the Lobby location while playing!
+	
+	#It's recommended to not change this!!!
+	errorfound: {@prefix} Error found!
+	
+	arenafull: &cThis arena is full of players!
+	
+	arenaingame: &cThis arena is currently in progress! 
+	
+	arenarestarting: &cThis arena is currently being restarted!
+	
+	arenanotsaved: &cThis arena hasn't been saved!
+	
+	arenadoesntexist: &cThis arena doesn't exist!
+	
+	cannotdowhileplaying: &cYou can't do this while playing!
+	
+	missingadminpermission: &cYou don't have enough permissions to execute this command! Permission: &asw.admin
+	
+	missingplayerpermission: &cYou don't have enough permissions to execute this command!
+	
+	searchingarenas: &7Searching for available arenas...
+	
+	noarenascreatedorsaved: &cYou haven't created or saved any arenas so there aren't any arenas to display!
+	
+	signadded: &7Sign Added
+	
+	arenacurrentlysaving: &cThis arena is currently saving!
+	
+	arenafound: &7Arena found!
+	
+	specifyanarenaname: &cYou must specify an arena name!
+	
+	dontneedtospecifyanumber: &cYou don't need to specify a number!
+	
+	mustspecifyanumber: &cYou must specify a number!
+		
+	
+#
+# ● ITEM NAMES ●
+#
+			
+	teleporteritem: compass
+	teleporteritemname: &a&lTéléporteur
+	
+	leaveitem: magma_cream	
+	leaveitemname: &6&lQuitter la partie (au revoir %player%)	
+	
+	playagainitem: paper
+	playagainitemname: &6&lRejouer
+
+	addspawnitem: green clay
+	addspawnitemname: &aAjouter un spawn
+	
+	sethighbounditem: yellow clay
+	sethighbounditemname: &cSET HIGHBOUND
+	
+#
+# ● SIGNS ●
+#	
+
+	signline1: &a&l[JOIN]
+	
+	autojoinline: &c&lSOLO
+	
+	menuline: &3&lArenas
+	
+#
+# ● GUIS ●
+#		
+	
+	arenasguiname: SKYWARS ARENAS
+
+	specgui: TELEPORT TO	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+on skript load:
+	clear {SW.OP::*}
+	clear {SW.NORMAL::*}
+	wait 1 seconds	
+	
+	
+#
+# ● CHEST ITEMS » NORMAL ●
+#	
+	add 1 iron_sword, lava_bucket, water_bucket, stone_sword, stone_pickaxe, iron_pickaxe, iron_axe, 16 dark oak planks, 24 dark oak planks, 32 dark oak planks, 16 stone, 24 stone, 32 stone, 1 golden_apple, 1 golden_apple,1 fishing_rod, 16 snowball, 16 egg, 1 bow, 16 exp_bottle, 6 cooked_beef, 16 arrows , 1 iron_helmet, 1 iron_chestplate , 1 iron_leggings, 1 iron_boots, 1 diamond_helmet, 1 diamond_chestplate, 1 diamond_leggings and 1 diamond_sword to {SW.NORMAL::*} 
+
+	
+#
+# ● CHEST ITEMS » OP ●
+#	
+	add 16 stone, bow of power 1, 16 arrows, 1 golden_apple, 16 snowball, 1 ender_pearl, 16 stone, diamond_sword of sharpness, diamond_helmet of protection 1, diamond_boots of protection 1, diamond_leggings of protection 1 and diamond_chestplate of protection 1 to {SW.OP::*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+#
+# \\ CODE // Don't change anything unless you know what you're doing!!!
+#
+
+
+
+on load:
+	send "&7&l--------------------------------------------" to console
+	send " " to console
+	send "{@prefix} &aLoading &ev.{@plugin-version}&a..." to console
+	wait 1 tick
+	send "{@prefix} &e%size of {sw.arenas::*}% &agames loaded!" to console
+	wait 1 tick
+	send "{@prefix} &a&lSkript successfully loaded!" to console
+	send " " to console
+	send "&7&l--------------------------------------------" to console
+
+on unload:
+	send "&7&l--------------------------------------------" to console
+	send " " to console
+	send "{@prefix} &cDisabling &ev.{@plugin-version}&c..." to console
+	send "{@prefix} &ev.{@plugin-version} &cdisabled!" to console
+	send " " to console
+	send "&7&l--------------------------------------------" to console
+	stop
+	
+
+		
+#
+# \\ VARIABLES MANAGER //
+#
+on join:
+	set {sw.player.%uuid of player%.playing} to false
+	if {sw.stats.kills.%uuid of player%} is not set:
+		set {sw.stats.kills.%uuid of player%} to 0
+	if {sw.stats.deaths.%uuid of player%} is not set:
+		set {sw.stats.deaths.%uuid of player%} to 0
+	if {sw.stats.wins.%uuid of player%} is not set:
+		set {sw.stats.wins.%uuid of player%} to 0
+	if {sw.stats.points.%uuid of player%} is not set:
+		set {sw.stats.points.%uuid of player%} to 0	
+	loop all players:
+		if loop-player has 1 {@teleporteritem} named "{@teleporteritemname}":
+			hide loop-player from player
+		
+#
+# \\ CODE // Don't change anything unless you know what you're doing!!
+#
+command /sw [<text>] [<text>] [<integer>] [<player>]:
+	executable by: players
+	trigger:
+		if text arg 1 is not set:
+			if text arg 2 is not set:
+				if integer arg 1 is not set:
+					if player arg 1 is not set:
+						if player have permission "sw.player":
+							make player execute the command "/sw help"
+						else:
+							send "{@missingplayerpermission}"
+							stop
+		if text arg 1 is "help":
+			if player have permission "sw.player":
+				if text arg 2 is not set:
+					send "&7&l----------------&8[ {@prefix} &8]&7&l----------------"
+					send "&8&l● &7/sw list                                               "
+					send "&8&l● &7/sw join &8(&7arena_name&8)                            "
+					send "&8&l● &7/sw stats                                              "
+					send "&8&l● &7/sw autojoin                                           "
+					send "&8&l● &7/sw leave                                              "
+			if player have permission "sw.admin":
+				if text arg 2 is not set:
+					send "&8&l● &7/sw setlobby                                           "
+					send "&8&l● &7/sw createArena &8(&7arena_name&8)                     "
+					send "&8&l● &7/sw deleteArena &8(&7arena_name&8)                     "
+					send "&8&l● &7/sw addSpawn &8(&7arena_name&8)                        "
+					send "&8&l● &7/sw removeSpawn &8(&7arena_name&8)                     "
+					send "&8&l● &7/sw center &8(&7arena_name&8)                          "
+					send "&8&l● &7/sw setHighBound &8(&7arena_name&8)                    "
+					send "&8&l● &7/sw setLowBound &8(&7arena_name&8)                     "
+					send "&8&l● &7/sw saveArena &8(&7arena_name&8)                       "
+					send "&8&l● &7/sw Max &8(&7arena_name&8) &8(&7number&8)              "
+					send "&8&l● &7/sw Min &8(&7arena_name&8) &8(&7number&8)              "								
+					send "&8&l● &7/sw resetstats &8(&7player&8)                          "										
+					send "&7&l---------------------------------------------"
+					stop
+				if text arg 2 is "1":
+					make player execute the command "sw help"
+					stop
+		if text arg 1 is "autojoin":
+			if player have permission "sw.player":		
+				if size of {sw.arenas::*} is not 0:
+					send "{@searchingarenas}"
+					loop {sw.arenas::*}:
+						if {sw.arena.%loop-value%.status} is "{@waiting}" or "{@starting}":
+							send "{@arenafound}"
+							if {sw.player.%uuid of player%.playing} is true:
+								if {sw.arena.%{sw.player.%uuid of player%.arena}%.status} is "{@ingame}" or "{@restarting}":	
+									if player has 1 {@playagainitem} named "{@playagainitemname}":
+										make player execute command "sw leave"
+										wait 0.1 seconds
+										make player execute the command "/sw join %loop-value%"
+										stop loop
+										stop
+									else:
+										send "{@errormessage}"
+										stop										
+								else:
+									send "{@errormessage}"
+									stop
+							else:
+								make player execute the command "/sw join %loop-value%"
+								stop loop
+								stop								
+								
+				else:
+					send "{@noarenasavailable}"
+					stop
+			else:
+				send "{@missingadminpermission}"
+				stop					
+		if text arg 1 is not "autojoin" or "list" or "setLobby" or "join" or "createArena" or "deleteArena" or "addSpawn" or "removeSpawn" or "center" or "setHighBound" or "setLowBound" or "saveArena" or "max" or "min" or "resetstats" or "stats" or "leave":
+			make player execute the command "sw"
+			stop
+		if text arg 1 is "setlobby":
+			if player have permission "sw.admin":
+				if {sw.player.%uuid of player%.playing} is false:
+					set {sw.lobby} to the player's location
+					send "{@lobbylocation}"
+					stop
+				else:
+					send "{@cannotchangelobbylocation}"
+					stop
+			else:
+				send "{@missingadminpermission}"
+				stop
+		if text arg 1 is "join":
+			if {sw.player.%uuid of player%.playing} is false:
+				if text arg 2 is set:
+					if {sw.arena.%text arg 2%.created} is true:
+						if {sw.arena.%text arg 2%.saved} is true:
+							if {sw.arena.%text arg 2%.status} is "{@waiting}" or "{@starting}":
+								invoke "sw.clearplayer" from player	
+								add 1 to {sw.arena.%text arg 2%.playing}
+								add player to {sw.arena.%text arg 2%.players.alive::*}
+								set {sw.player.%uuid of player%.playing} to true
+								set {sw.player.%uuid of player%.arena} to text arg 2
+								set {sw.gamekills.%{sw.player.%uuid of player%.arena}%::%player%} to 0
+								invoke "sw.refreshmenu"									
+								invoke "sw.spawncage" from {sw.arena.%text arg 2%.spawn.%{sw.arena.%text arg 2%.playing}%} and player						
+								set player's slot 8 to {@leaveitem} named "{@leaveitemname}"
+								send "{@joinmessage} %{sw.arena.%text arg 2%.playing}%&7/%{sw.arena.%text arg 2%.max}%" to {sw.arena.%text arg 2%.players.alive::*}	
+								if {sw.arena.%text arg 2%.playing} = {sw.arena.%text arg 2%.max}:
+									set {sw.arena.%text arg 2%.status} to "{@full}"																			
+								if {sw.arena.%text arg 2%.run} is false:
+									if {sw.arena.%text arg 2%.playing} = {sw.arena.%text arg 2%.min}:
+										set {sw.arena.%text arg 2%.run} to true												
+										set {sw.arena.%text arg 2%.status} to "{@starting}"
+										if {sw.arena.%text arg 2%.playing} = {sw.arena.%text arg 2%.max}:
+											set {sw.arena.%text arg 2%.status} to "{@full}"		
+											set {sw.arena.%text arg 2%.seconds} to {@fullarenacooldown}
+										send "{@prefix} Starting in %{sw.arena.%text arg 2%.seconds}% &7seconds!" to {sw.arena.%text arg 2%.players.alive::*}
+										loop {sw.arena.%text arg 2%.seconds} times:
+											if {sw.arena.%text arg 2%.playing} is not 0:
+												remove 1 from {sw.arena.%text arg 2%.seconds}
+												wait 1 second
+												if {sw.arena.%text arg 2%.seconds} is 4:	
+													send {sw.arena.%text arg 2%.players.alive::*} title "&c&l3" with subtitle "{@startingsubtitle}" for 0.5 seconds													
+												if {sw.arena.%text arg 2%.seconds} is 3:
+													send {sw.arena.%text arg 2%.players.alive::*} title "&c&l2" with subtitle "{@startingsubtitle}" for 0.5 seconds	
+													send "{@prefix} Starting in 3 seconds!" to {sw.arena.%text arg 2%.players.alive::*}
+												if {sw.arena.%text arg 2%.seconds} is 2:
+													send {sw.arena.%text arg 2%.players.alive::*} title "&c&l1" with subtitle "{@startingsubtitle}" for 0.5 seconds														
+													send "{@prefix} Starting in 2 seconds!" to {sw.arena.%text arg 2%.players.alive::*}													
+												if {sw.arena.%text arg 2%.seconds} is 1:													
+													send "{@prefix} Starting in 1 second!" to {sw.arena.%text arg 2%.players.alive::*}														
+											else:
+												set {sw.arena.%text arg 2%.seconds} to {@waitingtime}
+												set {sw.arena.%text arg 2%.status} to "{@waiting}"
+												stop loop
+										if {sw.arena.%text arg 2%.playing} is not 0:
+											if {sw.arena.%text arg 2%.playing} >= {sw.arena.%text arg 2%.min}:
+												if {sw.arena.%text arg 2%.playing} is 0:
+													set {sw.arena.%text arg 2%.seconds} to {@waitingtime}
+													set {sw.arena.%text arg 2%.run} to false
+													set {sw.arena.%text arg 2%.status} to "{@waiting}"
+												if {sw.arena.%text arg 2%.playing} >= {sw.arena.%text arg 2%.min}:
+													send "{@startmessage}" to {sw.arena.%text arg 2%.players.alive::*}
+													loop {sw.arena.%text arg 2%.players.alive::*}:
+														invoke "sw.clearplayer" from loop-value
+														invoke "sw.clearcage" from loop-value	
+														wait 1 tick					
+													set {sw.arena.%text arg 2%.run} to false
+													invoke "sw.gametime" from {sw.player.%uuid of player%.arena}
+													invoke "sw.refreshmenu"													
+													wait 1 seconds
+													set {sw.arena.%text arg 2%.status} to "{@ingame}"													
+												else:
+													set {sw.arena.%text arg 2%.seconds} to {@waitingtime}
+													set {sw.arena.%text arg 2%.run} to false
+													set {sw.arena.%text arg 2%.status} to "{@waiting}"
+													send "&7There are &c&lnot &7enough players to start!" to {sw.arena.%text arg 2%.players.alive::*}
+													stop
+											else:
+												set {sw.arena.%text arg 2%.seconds} to {@waitingtime}
+												set {sw.arena.%text arg 2%.run} to false
+												set {sw.arena.%text arg 2%.status} to "{@waiting}"
+												send "&7There are &c&lnot &7enough players to start!" to {sw.arena.%text arg 2%.players.alive::*}
+												stop
+										else:
+											set {sw.arena.%text arg 2%.seconds} to {@waitingtime}
+											set {sw.arena.%text arg 2%.run} to false
+											set {sw.arena.%text arg 2%.status} to "{@waiting}"
+											stop
+								stop
+							if {sw.arena.%text arg 2%.status} is "{@full}":
+								send "{@arenafull}"
+								stop 
+							if {sw.arena.%text arg 2%.status} is "{@ingame}":
+								send "{@arenaingame}"
+								stop
+							if {sw.arena.%text arg 2%.status} is "{@restarting}":
+								send "{@arenarestarting}"
+								stop
+							else:
+								send "{@errorfound}"
+								send "{@errormessage}"
+								stop
+						else:
+							send "{@arenanotsaved}"
+							stop
+					else:
+						send "{@arenadoesntexist}"
+						stop
+				else:
+					send "&cYou must specify an arena name!"
+					stop
+			else:
+				send "&{@cannotdowhileplaying}"
+				stop	
+		if text arg 1 is "list":	
+			if player have permission "sw.player":				
+				if size of {sw.arenas::*} is not 0:
+					send "&7Loading arenas..."
+					set {_sw.list} to 0
+					if size of {sw.arenas::*} <= 9:
+						set {_list.size} to 1
+					if size of {sw.arenas::*} is greater or equal to 9:	
+						set {_list.size} to 2
+					if size of {sw.arenas::*} is greater or equal to 18:	
+						set {_list.size} to 3
+					if size of {sw.arenas::*} is greater or equal to 27:	
+						set {_list.size} to 4
+					if size of {sw.arenas::*} is greater or equal to 36:	
+						set {_list.size} to 5						
+					open virtual chest inventory with size {_list.size} named "{@arenasguiname}" to player
+					wait 1 tick
+					loop {sw.arenas::*}:
+						if {sw.arena.%loop-value%.status} is "{@ingame}" or "{@full}" or "{@restarting}":
+							make a gui slot {_sw.list} of player with red clay named "&8 " with lore "&8&l» &7Name&8: &e&l%loop-value%||||&8&l» &7Status&8: %{sw.arena.%loop-value%.status}%||||&8&l» &7Players&8: &7%{sw.arena.%loop-value%.playing}%/%{sw.arena.%loop-value%.max}%||||&8&l● &7&lClick to join!" to run player command "sw join %loop-value%"
+							add 1 to {_sw.list}
+						else:
+							make a gui slot {_sw.list} of player with green clay named "&8 " with lore "&8&l» &7Name&8: &e&l%loop-value%||||&8&l» &7Status&8: %{sw.arena.%loop-value%.status}%||||&8&l» &7Players&8: &7%{sw.arena.%loop-value%.playing}%/%{sw.arena.%loop-value%.max}%||||&8&l● &7&lClick to join!" to run player command "sw join %loop-value%"                                          
+							add 1 to {_sw.list}
+					stop	
+				else:
+					send {@noarenascreatedorsaved}
+					stop	
+		if arg-1 is "resetstats":
+			if player have permission "sw.admin":	
+				if arg-2 is set:
+					set {_player} to arg-2 parsed as offline player
+					invoke "sw.resetstats" from {_player}
+					send "&3&l» &c&lYou reset &c&l%arg-2%&c&l's stats"
+				else:
+					send "&3&l» &c&l/sw resetstats <player>"							
+		if text arg 1 is "createArena":
+			if player have permission "sw.admin":
+				if text arg 2 is set:
+					if {sw.player.%uuid of player%.playing} is false:
+						if {sw.arena.%text arg 2%.created} is not set:
+							set {sw.arena.%text arg 2%.created} to true
+							set {sw.arena.%text arg 2%.saved} to false
+							set {sw.arena.%text arg 2%.spawn.id} to 0
+							set {sw.arena.%text arg 2%.saving} to false
+							set {sw.arena.%uuid of player%.creating} to text arg-2
+							clear player's inventory
+							send "&c&lSETUP &e&l» &7The arena &a%text arg 2% &7has successfully been created!"
+							set slot 0 of player to {@sethighbounditem} named "{@sethighbounditemname}" 
+							set slot 1 of player to yellow clay named "&cSET LOWBOUND" 	
+							set slot 2 of player to {@addspawnitem} named "{@addspawnitemname}" 
+							set slot 3 of player to red clay named "&cREMOVE SPAWN" 							
+							set slot 4 of player to clay ball named "&cSET CENTER" 							
+							set slot 5 of player to yellow clay named "&cSET MIN PLAYERS" 								
+							set slot 6 of player to yellow clay named "&cSET MAX PLAYERS" 	
+							set slot 7 of player to green clay named "&7ARENA &c%{sw.arena.%uuid of player%.creating}%" 							
+							set slot 8 of player to red clay named "&a&lSAVE ARENA" 								
+							stop
+						else:
+							send "&cThis arena has already been created!"
+							stop
+					else:
+						send "{@cannotdowhileplaying}"
+						stop
+				else:
+					send "{@specifyanarenaname}"
+					stop
+			else:
+				send "{@missingadminpermission}"
+				stop
+		if text arg 1 is "deleteArena":
+			if player have permission "sw.admin":
+				if text arg 2 is set:
+					if {sw.player.%uuid of player%.playing} is false:
+						if {sw.arena.%text arg 2%.created} is true:
+							if {sw.arena.%text arg 2%.playing} is 0:
+								delete {sw.arena.%text arg 2%.created}
+								delete {sw.arena.%text arg 2%.saved}
+								delete {sw.arena.%text arg 2%.status}
+								delete {sw.arena.%text arg 2%.max}
+								delete {sw.arena.%text arg 2%.min}
+								delete {sw.arena.%text arg 2%.spawn.id}
+								delete {sw.arena.%text arg 2%.playing}
+								delete {sw.arena.%text arg 2%.players.alive::*}
+								delete {sw.arena.%text arg 2%.players.death::*}
+								delete {sw.arena.%text arg 2%.created}
+								delete {sw.arena.%text arg 2%.saved}
+								delete {sw.arena.%text arg 2%.spawn.id}
+								delete {sw.arena.%text arg 2%.center}	
+								delete {sw.arena.%text arg 2%.gametime::*}	
+								delete {sw.gamekills.%text arg 2%::*}
+								remove text arg 2 from {sw.arenas::*}
+								send "&c&lSETUP &e&l» &7The arena &c%text arg 2% &7has been successfully deleted!"
+								stop
+							else:
+								send "&cThere are still players playing in the arena!"
+								stop
+						else:
+							send "{arenadoesntexist}"
+							stop
+					else:
+						send "{@cannotdowhileplaying}"
+						stop
+				else:
+					send "{@specifyanarenaname}"
+					stop
+			else:
+				send "{@missingadminpermission}"
+				stop
+		if text arg 1 is "stats":
+			if player have permission "sw.player":		
+				if arg-2 is not set:
+					invoke "sw.showstats" from player
+				else:
+					invoke "sw.showstats" from player and arg-2	
+			else:
+				send "{@missingplayerpermission}"
+				stop			
+		if text arg 1 is "addSpawn":
+			if player have permission "sw.admin":
+				if text arg 2 is set:
+					if integer arg 1 is not set:
+						if {sw.player.%uuid of player%.playing} is false:
+							if {sw.arena.%text arg 2%.created} is true:
+								add 1 to {sw.arena.%text arg 2%.spawn.id}
+								set {sw.arena.%text arg 2%.spawn.%{sw.arena.%text arg 2%.spawn.id}%} to location of player
+								send "&c&lSETUP &e&l» &7Spawn &anº%{sw.arena.%text arg 2%.spawn.id}% &7has been set!"
+								stop
+							else:
+								send "{@arenadoesntexist}"
+								stop
+						else:
+							send "{@cannotdowhileplaying}"
+							stop
+					else:
+						send "{@dontneedtospecifyanumber}"
+						stop
+				else:
+					send "{@specifyanarenaname}"
+					stop
+			else:
+				send "{@missingadminpermission}"
+				stop
+		if text arg 1 is "removeSpawn":
+			if player have permission "sw.admin":
+				if text arg 2 is set:
+					if integer arg 1 is not set:
+						if {sw.player.%uuid of player%.playing} is false:
+							if {sw.arena.%text arg 2%.created} is true:
+								if {sw.arena.%text arg 2%.spawn.id} is not 0:
+									send "&c&lSETUP &e&l» &7Spawn &anº%{sw.arena.%text arg 2%.spawn.id}% &7has been deleted!"
+									delete {sw.arena.%text arg 2%.spawn.%{sw.arena.%text arg 2%.spawn.id}%}
+									remove 1 from {sw.arena.%text arg 2%.spawn.id}
+									stop
+								else:
+									send "&cThere are no more spawns to remove!"
+									stop
+							else:
+								send "{@arenadoesntexist}"
+								stop
+						else:
+							send "{@cannotdowhileplaying}"
+							stop
+					else:
+						send "{@dontneedtospecifyanumber}"
+						stop
+				else:
+					send "{@specifyanarenaname}"
+					stop
+			else:
+				send "{@missingadminpermission}"
+				stop
+		if text arg 1 is "center":
+			if player have permission "sw.admin":
+				if text arg 2 is set:
+					if integer arg 1 is not set:
+						if {sw.player.%uuid of player%.playing} is false:
+							if {sw.arena.%text arg 2%.created} is true:
+								set {sw.arena.%text arg 2%.center} to location of player
+								send "&c&lSETUP &e&l» &7Setted the &aArena Center &7to your current location!"
+								stop
+							else:
+								send "{@arenadoesntexist}"
+								stop
+						else:
+							send "{@cannotdowhileplaying}"
+							stop
+					else:
+						send "{@dontneedtospecifyanumber}"
+						stop
+				else:
+					send "{@specifyanarenaname}"
+					stop
+			else:
+				send "{@missingadminpermission}"
+				stop
+		if text arg 1 is "setHighBound":
+			if player have permission "sw.admin":
+				if text arg 2 is set:
+					if integer arg 1 is not set:
+						if {sw.player.%uuid of player%.playing} is false:
+							if {sw.arena.%text arg 2%.created} is true:
+								set {sw.arena.%text arg 2%.pos.1} to location of player
+								make player execute command "//pos2"
+								send "&c&lSETUP &e&l» &7Setted the &aHigh bound &7to your current location!"
+								stop
+							else:
+								send "{@arenadoesntexist}"
+								stop
+						else:
+							send "{@cannotdowhileplaying}"
+							stop
+					else:
+						send "{@dontneedtospecifyanumber}"
+						stop
+				else:
+					send "{@specifyanarenaname}"
+					stop
+			else:
+				send "{@missingadminpermission}"
+				stop
+		if text arg 1 is "setLowBound":
+			if player have permission "sw.admin":
+				if text arg 2 is set:
+					if integer arg 1 is not set:
+						if {sw.player.%uuid of player%.playing} is false:
+							if {sw.arena.%text arg 2%.created} is true:
+								set {sw.arena.%text arg 2%.pos.2} to location of player
+								make player execute command "//pos1"
+								send "&c&lSETUP &e&l» &7Set the &aLow bound &7to your current location!"
+								stop
+							else:
+								send "{@arenadoesntexist}"
+								stop
+						else:
+							send "{@cannotdowhileplaying}"
+							stop
+					else:
+						send "{@dontneedtospecifyanumber}"
+						stop
+				else:
+					send "{@specifyanarenaname}"
+					stop
+			else:
+				send "{@missingadminpermission}"
+				stop
+		if text arg 1 is "saveArena":
+			if player have permission "sw.admin":
+				if text arg 2 is set:
+					if integer arg 1 is not set:
+						if {sw.player.%uuid of player%.playing} is false:
+							if {sw.arena.%text arg 2%.created} is true:
+								if {sw.arena.%text arg 2%.saved} is false:
+									if {sw.arena.%text arg 2%.pos.1} is set:
+										if {sw.arena.%text arg 2%.pos.2} is set:
+											if {sw.arena.%text arg 2%.max} is set:
+												if {sw.arena.%text arg 2%.min} is set:
+													if {sw.arena.%text arg 2%.saving} is false:
+														if {sw.arena.%text arg 2%.spawn.id} = {sw.arena.%text arg 2%.max}:
+															set {sw.arena.%text arg 2%.saving} to true
+															send "&7Saving the arena please wait..."
+															wait 10 ticks
+															loop blocks within {sw.arena.%text arg 2%.pos.1} to {sw.arena.%text arg 2%.pos.2}:
+																if loop-block is a chest:
+																	add location of loop-block to {sw.arena.%text arg 2%.SW.NORMAL::*}
+																	wait 7 ticks
+																if loop-block is a trapped_chest:
+																	add location of loop-block to {sw.arena.%text arg 2%.SW.OP::*}		
+																	wait 7 ticks																
+															make player execute command "rb addregion %text arg 2%"		
+															send "&c&lSETUP &e&l» &7The arena &a%text arg 2%&7 has been saved!"
+															add text arg 2 to {sw.arenas::*}
+															set {sw.arena.%text arg 2%.saved} to true
+															set {sw.arena.%text arg 2%.status} to "{@restarting}"
+															set {sw.arena.%text arg 2%.playing} to 0
+															set {sw.arena.%text arg 2%.run} to false
+															set {sw.arena.%text arg 2%.seconds} to {@waitingtime}
+															set {sw.arena.%text arg 2%.saving} to false
+															set {sw.arena.%text arg 2%.gametime::minutes} to {@gameminutes} -1
+															clear player's inventory
+															clear {sw.arena.%uuid of player%.creating}
+															wait 1 second
+															invoke "sw.API.arenaReset" from arg-2
+															stop
+														else:
+															send "&cYou did not set the spawns correctly!"
+															stop																															
+													else:
+														send "{@arenacurrentlysaving}"
+														stop
+												else:
+													send "&cYou need to set the minimum players!"
+													stop
+											else:
+												send "&cYou need to set the maximum players!"
+												stop
+										else:
+											send "&cYou need to set the bounds for the arena!"
+											stop
+									else:
+										send "&cYou need to set the bounds for the arena!"
+										stop
+								else:
+									send "&cYou have already saved this arena!"
+									stop
+							else:
+								send "{@arenadoesntexist}"
+								stop
+						else:
+							send "{@cannotdowhileplaying}"
+							stop
+					else:
+						send "{@dontneedtospecifyanumber}"
+						stop
+				else:
+					send "{@specifyanarenaname}"
+					stop
+			else:
+				send "{@missingadminpermission}"
+				stop
+		if text arg 1 is "max":
+			if player have permission "sw.admin":
+				if text arg 2 is set:
+					if integer arg 1 is set:
+						if {sw.player.%uuid of player%.playing} is false:
+							if {sw.arena.%text arg 2%.created} is true:
+								if {sw.arena.%text arg 2%.saved} is false:
+									if integer arg 1 > 0:
+										set {sw.arena.%text arg 2%.max} to integer arg 1
+										send "&c&lSETUP &e&l» &7Set the &amaximum players &7to &a%integer arg 1%&7!"
+										stop
+									else:
+										send "&cYou can't use negative number!"
+										stop
+								else:
+									send "&cThis arena is saved! That means that it is not open to any kind of modifications."
+									stop
+							else:
+								send "{@arenadoesntexist}"
+								stop
+						else:
+							send "{@cannotdowhileplaying}"
+							stop
+					else:
+						send "{@mustspecifyanumber}"
+						stop
+				else:
+					send "{@specifyanarenaname}"
+					stop
+			else:
+				send "{@missingadminpermission}"
+				stop
+		if text arg 1 is "min":
+			if player have permission "sw.admin":
+				if text arg 2 is set:
+					if integer arg 1 is set:
+						if {sw.player.%uuid of player%.playing} is false:
+							if {sw.arena.%text arg 2%.created} is true:
+								if {sw.arena.%text arg 2%.saved} is false:
+									if integer arg 1 > 0:
+										set {sw.arena.%text arg 2%.min} to integer arg 1
+										send "&c&lSETUP &e&l» &7Set the &aminimum players &7to &a%integer arg 1%&7!"
+										stop
+									else:
+										send "&cYou can't use negative number!"
+										stop
+								else:
+									send "&cThis arena is saved! That means that it is not open to any kind of modifications."
+									stop
+							else:
+								send "{@arenadoesntexist}"
+								stop
+						else:
+							send "{@cannotdowhileplaying}"
+							stop
+					else:
+						send "{@mustspecifyanumber}"
+						stop
+				else:
+					send "{@specifyanarenaname}"
+					stop 
+			else:
+				send "{@missingadminpermission}"
+				stop	
+		if text arg 1 is "leave":
+			if {sw.player.%uuid of player%.playing} is true:
+				if {sw.player.%uuid of player%.arena} is set:	
+					invoke "sw.clearplayer" from player				
+					teleport player to {sw.lobby}
+					remove player from {sw.arena.%{sw.player.%uuid of player%.arena}%.players.alive::*}
+					remove player from {sw.arena.%{sw.player.%uuid of player%.arena}%.players.death::*}					
+					remove 1 from {sw.arena.%{sw.player.%uuid of player%.arena}%.playing}
+					set {sw.player.%uuid of player%.playing} to false					
+					reveal player from all players
+					reveal all players to player
+					if {sw.arena.%{sw.player.%uuid of player%.arena}%.status} is not "{@starting}" or "{@full}":
+						if {sw.arena.%{sw.player.%uuid of player%.arena}%.playing} is 1:
+							loop {sw.arena.%{sw.player.%uuid of player%.arena}%.players.alive::*}:
+								invoke "sw.winner" from loop-value	
+						else:
+							remove player from {sw.arena.%{sw.player.%uuid of player%.arena}%.players.alive::*} and {sw.arena.%{sw.player.%uuid of player%.arena}%.players.death::*}
+							send "{@leavemessage} &7(%{sw.arena.%{sw.player.%uuid of player%.arena}%.playing}%&7/%{sw.arena.%{sw.player.%uuid of player%.arena}%.max}%&7)" to {sw.arena.%{sw.player.%uuid of player%.arena}%.players.alive::*} and {sw.arena.%{sw.player.%uuid of player%.arena}%.players.death::*}	
+							invoke "sw.clearplayer" from player
+							teleport {_p} to {sw.lobby}
+							reveal player to all players
+							stop
+					if {sw.arena.%{sw.player.%uuid of player%.arena}%.status} is "{@starting}" or "{@full}":		
+						set {sw.arena.%{sw.player.%uuid of player%.arena}%.status} to "{@starting}"
+						if {sw.arena.%{sw.player.%uuid of player%.arena}%.playing} = 0:	
+							set {sw.arena.%{sw.player.%uuid of player%.arena}%.status} to "{@waiting}"						
+							
+					else:
+						if player has 1 {@teleporteritem} named "{@teleporteritemname}":
+							stop
+						else:
+							send "{@leavemessage} &7(%{sw.arena.%{sw.player.%uuid of player%.arena}%.playing}%&7/%{sw.arena.%{sw.player.%uuid of player%.arena}%.max}%&7)" to {sw.arena.%{sw.player.%uuid of player%.arena}%.players.alive::*} and {sw.arena.%{sw.player.%uuid of player%.arena}%.players.death::*}	
+				else:
+					send "{@errorfound}"
+					send "{@errormessage}"
+					stop
+			else:
+				send "&cYou are not playing in any arenas!"
+				stop
+			
+#
+# \\ CHAT //
+#
+
+on chat:
+	if {sw.player.%uuid of player%.playing} is true:
+		cancel event
+		if player has 1 {@teleporteritem} named "{@teleporteritemname}":
+			send {@specchat} to {sw.arena.%{sw.player.%uuid of player%.arena}%.players.death::*}	
+		else:
+			send {@normalchat} to {sw.arena.%{sw.player.%uuid of player%.arena}%.players.alive::*} and {sw.arena.%{sw.player.%uuid of player%.arena}%.players.death::*} 
+			
+		
+#
+# \\ IN-GAME COMMANDS //
+#
+	
+on command:
+	if {sw.player.%uuid of player%.playing} is true:
+		if command is {@ingamecommands}:
+			stop	
+		if player is op:
+			stop	
+		if player has permission "sw.admin":
+			stop			
+		if command is "sw autojoin" or "sw":
+			stop
+		else:
+			cancel event
+			send "{@prefix} {@cannotdowhileplaying}"
+
+
+#
+# \\ SIGNS //
+#
+on sign change:
+	if line 1 is "[SW]" or "[SKYWARS]":
+		if line 2 is set:	
+			if line 2 is "autojoin":
+				set line 1 to "{@signline1}"
+				set line 2 to "{@autojoinline}"
+				send "{@prefix} {@signadded}"
+				stop
+			if line 2 is "arenas":
+				set line 1 to "{@signline1}"
+				set line 2 to "{@menuline}"
+				send "{@prefix} {@signadded}"
+				stop				
+
+
+
+
+on right-click on sign:
+	if line 1 is "{@signline1}":
+		if line 2 is "{@autojoinline}":	
+			make player execute the command "/sw autojoin"
+			stop
+		if line 2 is "{@menuline}":	
+			make player execute the command "/sw list"
+			stop			
+	else:
+		stop
+		
+#
+# \\ OTHER //
+#
+
+	
+on break:
+	if {sw.player.%uuid of player%.playing} is true:
+		if {sw.arena.%{sw.player.%uuid of player%.arena}%.status} is "{@waiting}" or "{@starting}" or "{@restarting}" or "{@full}":
+			cancel event
+		else:
+			show mob spawner flames at the location
+
+
+			
+function spec(s: player,p: player):		
+	set {_suuid} to uuid of {_s}
+	set {_puuid} to uuid of {_p}	
+	if {sw.player.%{_puuid}%.arena} is {sw.player.%{_suuid}%.arena}:
+		teleport {_s} to {_p}
+	
+			
+on pickup:
+	if player has 1 {@teleporteritem} named "{@teleporteritemname}":
+		cancel event
+
+								
+on drop:
+	if {sw.player.%uuid of player%.playing} is true:
+		if {sw.arena.%{sw.player.%uuid of player%.arena}%.status} is "{@waiting}" or "{@starting}" or "{@full}":
+			cancel event
+		else:
+			if player has 1 {@teleporteritem} named "{@teleporteritemname}":
+				cancel event
+
+			
+	
+on right click:	
+	if {sw.player.%uuid of player%.playing} is true:
+		if name of item is "{@teleporteritemname}":	
+			set {_sw.spec} to 0
+			open virtual chest inventory with size 6 named "{@specgui}" to player
+			loop {sw.arena.%{sw.player.%uuid of player%.arena}%.players.alive::*}:
+				wait 1 tick
+				make a gui slot {_sw.spec} of player with loop-value's skull named "&8&l● %colored loop-value's prefix% %loop-value%" with lore "||&3&l» &e&l● &7&lClick To Teleport||" to run function spec(player,loop-value)
+				add 1 to {_sw.spec}
+			set {_sw.spec} to 0
+			stop
+		if name of item is "{@leaveitemname}":				
+			make player execute command "sw leave"	
+			stop
+		if name of item is "{@playagainitemname}":	
+			make player execute command "sw autojoin"		
+			stop
+	if {sw.arena.%uuid of player%.creating} is set:
+		if name of item is "{@sethighbounditemname}":	
+			cancel event
+			make player execute command "sw sethighbound %{sw.arena.%uuid of player%.creating}%"
+		if name of item is "&cSET LOWBOUND":
+			cancel event
+			make player execute command "sw setlowbound %{sw.arena.%uuid of player%.creating}%"		
+		if name of item is "&cSET CENTER":
+			cancel event
+			make player execute command "sw center %{sw.arena.%uuid of player%.creating}%"	
+		if name of item is "{@addspawnitemname}":	
+			cancel event		
+			make player execute command "sw addspawn %{sw.arena.%uuid of player%.creating}%"		
+		if name of item is "&cREMOVE SPAWN":	
+			cancel event		
+			make player execute command "sw removespawn %{sw.arena.%uuid of player%.creating}%"		
+		if name of item is "&cSET MIN PLAYERS":
+			open virtual chest inventory with size 6 named "SET MIN" to player
+			wait 3 ticks
+			set {_sw.setplayers} to -1
+			loop 55 times:
+				make a gui slot {_sw.setplayers} of player with clay ball named "&7&l%loop-value%" with lore "||&8&l● &7&lClick to Set!||" to run player command "sw min %{sw.arena.%uuid of player%.creating}% %loop-value%"
+				add 1 to {_sw.setplayers}
+			set {_sw.setplayers} to 0
+			stop				
+		if name of item is "&cSET MAX PLAYERS":	
+			open virtual chest inventory with size 6 named "SET MAX" to player
+			wait 3 ticks
+			set {_sw.setplayers} to -1			
+			loop 55 times:
+				make a gui slot {_sw.setplayers} of player with clay ball named "&7&l%loop-value%" with lore "||&8&l● &7&lClick to Set!||" to run player command "sw max %{sw.arena.%uuid of player%.creating}% %loop-value%"
+				add 1 to {_sw.setplayers}
+			set {_sw.setplayers} to 0
+			stop				
+		if name of item is "&a&lSAVE ARENA":
+			cancel event		
+			make player execute command "sw saveArena %{sw.arena.%uuid of player%.creating}%"	
+		if name of item is "&c&l» &7&lARENA &c&l%{sw.arena.%uuid of player%.creating}%":	
+			cancel event
+
+				
+			
+		
+#		
+# \\ DEATH EVENT //
+#
+		
+on damage of player:	
+	if {sw.player.%uuid of victim%.playing} is true:
+		if {sw.arena.%{sw.player.%uuid of victim%.arena}%.status} is "{@restarting}" or "{@starting}" or "{@waiting}" or "{@full}":
+			cancel event
+		else:
+			if {sw.player.%uuid of victim%.playing} is set:
+				set {_victim} to victim
+				set {_attacker} to attacker			
+				set {lasthit.%{_victim}%} to {_attacker}
+				if attacker is a player:
+					if {@usebowdamagemsg} is true:
+						if projectile exists:
+							if projectile is arrow:
+								if victim is not dead:
+									message "{@prefix} {@bowdamage}" to the attacker					
+				if damage is greater than or equal to health of victim:
+					cancel event
+					drop all items in victim's inventory at victim						
+					remove {_victim} from {sw.arena.%{sw.player.%uuid of victim%.arena}%.players.alive::*}
+					remove 1 from {sw.arena.%{sw.player.%uuid of victim%.arena}%.playing}
+					add {_victim} to {sw.arena.%{sw.player.%uuid of victim%.arena}%.players.death::*}						
+					invoke "sw.spec" from {_victim} and attacker
+					if {@explosioneffect} is true:
+						create a fake explosion at the victim
+					send victim title "{@deathtitle}" with subtitle "{@deathsubtitle}" for 4 seconds	
+					set {_players.total::*} to {sw.arena.%{sw.player.%uuid of victim%.arena}%.players.alive::*} and {sw.arena.%{sw.player.%uuid of victim%.arena}%.players.death::*}
+					if attacker is set:	
+						if attacker is player:
+							invoke "sw.deathpoints" from attacker and victim
+							send "{@hasbeenkilled}" to {_players.total::*}
+							send "&3&l» &c%{sw.arena.%{sw.player.%uuid of victim%.arena}%.playing}% {@playersleft}" to {_players.total::*}	
+						else:
+							send "{@unknownkilled}" to {_players.total::*}
+							send "&3&l» &c%{sw.arena.%{sw.player.%uuid of victim%.arena}%.playing}% {@playersleft}" to {_players.total::*}	
+					else:
+						if {lasthit.%victim%} is set:
+							if {lasthit.%victim%} is victim:
+								send "{@suicide}" to {_players.total::*}
+								send "&3&l» &c%{sw.arena.%{sw.player.%uuid of victim%.arena}%.playing}% {@playersleft}" to {_players.total::*}	
+							else:
+								set {_attacker} to {lasthit.%victim%}	
+								invoke "sw.deathpoints" from {lasthit.%victim%} and victim
+								send "{@hasbeenkilled}" to {_players.total::*}
+								send "&3&l» &c%{sw.arena.%{sw.player.%uuid of victim%.arena}%.playing}% {@playersleft}" to {_players.total::*}	
+						else:
+							send "{@unknownkilled}" to {_players.total::*}
+							send "&3&l» &c%{sw.arena.%{sw.player.%uuid of victim%.arena}%.playing}% {@playersleft}" to {_players.total::*}								
+						
+					if {sw.arena.%{sw.player.%uuid of victim%.arena}%.playing} is 1:
+						if attacker is set:
+							if attacker is player:							
+								invoke "sw.winner" from attacker							
+							else:
+								loop {sw.arena.%{sw.player.%uuid of victim%.arena}%.players.alive::*}:							
+									invoke "sw.winner" from loop-value-1	
+						else:
+							loop {sw.arena.%{sw.player.%uuid of victim%.arena}%.players.alive::*}:							
+								invoke "sw.winner" from loop-value-1	
+								
+							
+				wait 8 seconds
+				delete {lasthit.%victim%}
+					
+	else:
+		stop
+			
+				
+
+					
+on quit:
+	make player execute command "sw leave"
+	clear {sw.gamekills.%{sw.player.%uuid of player%.arena}%::%player%}
+	if {sw.arena.%uuid of player%.creating} is set:
+		clear {sw.arena.%uuid of player%.creating}
+	stop
+	
+	
+on load:
+	loop {sw.arenas::*}:
+		set {sw.arena.%loop-value%.status} to "{@restarting}"
+	wait 1 second
+	loop {sw.arenas::*}:
+		invoke "sw.API.arenaReset" from loop-value
+		wait 1 tick
+		
+every 1 seconds:
+	loop all players:	
+		if {sw.player.%uuid of loop-player%.playing} is true:	
+			if {sw.arena.%{sw.player.%uuid of loop-player%.arena}%.status} is "{@ingame}" or "{@restarting}":	
+				invoke "sw.checklocation" from loop-player
+				if stylish scoreboard "SWGAME-%loop-player%" does not exist:
+					create new stylish scoreboard named "SWGAME-%loop-player%"
+					loop 14 times:
+						create a new id based score "SWGAME-%loop-player%Slot%loop-number%" with text "&%loop-number%" slot loop-number for stylish scoreboard "SWGAME-%loop-player%"
+				wait 3 ticks
+				set title of stylish scoreboard "SWGAME-%loop-player%" to "&6&lSKYWARS"
+				set stylish scoreboard of loop-player to "SWGAME-%loop-player%"
+				set the text of id "SWGAME-%loop-player%Slot14" to "&7&l%now%"				
+				set the text of id "SWGAME-%loop-player%Slot13" to "&fStatus"
+				set the text of id "SWGAME-%loop-player%Slot12" to "&6&l• &e%{sw.arena.%{sw.player.%uuid of loop-player%.arena}%.status}%"
+				set the text of id "SWGAME-%loop-player%Slot11" to "&5"	
+				set the text of id "SWGAME-%loop-player%Slot10" to "&fNext Event:"
+				set the text of id "SWGAME-%loop-player%Slot9" to "&6&l• &e%{sw.arena.%{sw.player.%uuid of loop-player%.arena}%.gametime::event.sb}% &c&l%{sw.arena.%{sw.player.%uuid of loop-player%.arena}%.gametime::event}%:%{sw.arena.%{sw.player.%uuid of loop-player%.arena}%.gametime::seconds}%"		
+				set the text of id "SWGAME-%loop-player%Slot8" to "&1"					
+				set the text of id "SWGAME-%loop-player%Slot7" to "&fPlayers left: &e%{sw.arena.%{sw.player.%uuid of loop-player%.arena}%.playing}%"
+				set the text of id "SWGAME-%loop-player%Slot6" to "&4"
+				set the text of id "SWGAME-%loop-player%Slot5" to "&fKills: &e%{sw.gamekills.%{sw.player.%uuid of loop-player%.arena}%::%loop-player%}%"
+				set the text of id "SWGAME-%loop-player%Slot4" to "&6"
+				set the text of id "SWGAME-%loop-player%Slot3" to "&fMap: &e%{sw.player.%uuid of loop-player%.arena}%"				
+				set the text of id "SWGAME-%loop-player%Slot2" to "&8"
+				set the text of id "SWGAME-%loop-player%Slot1" to "{@websitename}"	
+			if {sw.arena.%{sw.player.%uuid of loop-player%.arena}%.status} is "{@waiting}" or "{@starting}" or "{@full}":		
+				if stylish scoreboard "SWLOBBY-%loop-player%" does not exist:
+					create new stylish scoreboard named "SWLOBBY-%loop-player%"
+					loop 14 times:
+						create a new id based score "SWLOBBY-%loop-player%Slot%loop-number%" with text "&%loop-number%" slot loop-number for stylish scoreboard "SWLOBBY-%loop-player%"
+				wait 3 ticks
+				set title of stylish scoreboard "SWLOBBY-%loop-player%" to "&6&lSKYWARS"
+				set stylish scoreboard of loop-player to "SWLOBBY-%loop-player%"
+				set the text of id "SWLOBBY-%loop-player%Slot14" to "&5"		
+				set the text of id "SWLOBBY-%loop-player%Slot13" to "&fStatus"
+				set the text of id "SWLOBBY-%loop-player%Slot12" to "&6&l• %{sw.arena.%{sw.player.%uuid of loop-player%.arena}%.status}%"
+				set the text of id "SWLOBBY-%loop-player%Slot11" to "&8&1"					
+				set the text of id "SWLOBBY-%loop-player%Slot10" to "&fMap"				
+				set the text of id "SWLOBBY-%loop-player%Slot9" to "&6&l• &e%{sw.player.%uuid of loop-player%.arena}%"
+				set the text of id "SWLOBBY-%loop-player%Slot8" to "&4&1"					
+				set the text of id "SWLOBBY-%loop-player%Slot7" to "&fStarting in"
+				set the text of id "SWLOBBY-%loop-player%Slot6" to "&6&l• &e%{sw.arena.%{sw.player.%uuid of loop-player%.arena}%.seconds}%"		
+				set the text of id "SWLOBBY-%loop-player%Slot5" to "&2"					
+				set the text of id "SWLOBBY-%loop-player%Slot4" to "&fPlayers"
+				set the text of id "SWLOBBY-%loop-player%Slot3" to "&6&l• &e%{sw.arena.%{sw.player.%uuid of loop-player%.arena}%.playing}%/%{sw.arena.%{sw.player.%uuid of loop-player%.arena}%.max}%"
+				set the text of id "SWLOBBY-%loop-player%Slot2" to "&1"
+				set the text of id "SWLOBBY-%loop-player%Slot1" to "{@websitename}"				
+		else:
+			delete stylish scoreboard "SWLOBBY-%loop-player%"
+			delete stylish scoreboard "SWGAME-%loop-player%"			
+			
+		
+
+
+sub "sw.showstats":
+	set {_p} to parameter 1
+	set {_uuid} to uuid of {_p}	
+	if parameter 2 is not set:
+		send "&8&l●&7&l&m----------------------&8&l●" to {_p}
+		send "" to {_p}
+		send "&3&l» &7&lKILLS &e%{sw.stats.kills.%{_uuid}%}%" to {_p}
+		send "&3&l» &7&lDEATHS &e%{sw.stats.deaths.%{_uuid}%}%" to {_p}
+		send "&3&l» &7&lWINS &e%{sw.stats.wins.%{_uuid}%}%" to {_p}
+		send "&3&l» &7&lPOINTS &e%{sw.stats.points.%{_uuid}%}%" to {_p}				
+		send "" to {_p}
+		send "&8&l●&7&l&m----------------------&8&l●" to {_p}	
+	if parameter 2 is set:
+		set {_p2} to parameter 2	
+		set {_p2} to {_p2} parsed as offline player
+		set {_uuid2} to uuid of {_p2}	
+		send "&8&l●&7&l&m----------------------&8&l●" to {_p}
+		send "" to {_p}
+		send "&3&l» &7&lKILLS &e%{sw.stats.kills.%{_uuid2}%}%" to {_p}
+		send "&3&l» &7&lDEATHS &e%{sw.stats.deaths.%{_uuid2}%}%" to {_p}
+		send "&3&l» &7&lWINS &e%{sw.stats.wins.%{_uuid2}%}%" to {_p}
+		send "&3&l» &7&lPOINTS &e%{sw.stats.points.%{_uuid2}%}%" to {_p}				
+		send "" to {_p}
+		send "&8&l●&7&l&m----------------------&8&l●" to {_p}
+		
+		
+sub "sw.chestfill.normal":
+	set {_arena} to parameter 1
+	loop {sw.arena.%{_arena}%.SW.NORMAL::*}:
+		clear inventory of block at loop-value-1
+		loop 15 times:
+			set {_random} to random element out of {SW.NORMAL::*}
+			set {_slot} to a random integer between 0 and 26
+			add {_random} to slot {_slot} of block at loop-value-1
+			wait 1 tick			
+	stop
+	
+sub "sw.chestfill.op":
+	set {_arena} to parameter 1
+	loop {sw.arena.%{_arena}%.SW.OP::*}:
+		clear inventory of block at loop-value-1
+		loop 15 times:
+			set {_random} to random element out of {SW.OP::*}
+			set {_slot} to a random integer between 0 and 26
+			add {_random} to slot {_slot} of block at loop-value-1
+			wait 1 tick
+	stop	
+
+sub "sw.deathpoints":
+	set {_p} to parameter 1
+	set {_p2} to parameter 2	
+	set {_uuid} to uuid of {_p}
+	set {_uuid2} to uuid of {_p2}
+	
+	add 1 to {sw.gamekills.%{sw.player.%{_uuid}%.arena}%::%{_p}%}
+	add 1 to {sw.stats.kills.%{_uuid}%}					
+	add 1 to {sw.stats.deaths.%{_uuid2}%}
+	add {@pointsperkill} to {sw.stats.points.%{_uuid}%}
+	remove {@losepoints} from {sw.stats.points.%{_uuid2}%}
+	if {sw.stats.points.%{_uuid2}%} <= 0:
+		if {@allownegativepoints} is false:
+			set {sw.stats.points.%{_uuid2}%} to 0	
+
+	
+sub "sw.gametime":
+	set {_arena} to parameter 1	
+	set {sw.arena.%{_arena}%.gametime::minutes} to {@gameminutes} -1 
+	set {sw.arena.%{_arena}%.gametime::seconds} to 60
+	
+	set {sw.arena.%{_arena}%.gametime::event} to {@refillminute} -1
+	set {sw.arena.%{_arena}%.gametime::event.sb} to "{@refill}"	
+	loop {@gameminutes}*60+150 times:
+		wait 1 seconds
+		if {sw.arena.%{_arena}%.status} is "{@ingame}" or "{@starting}" or "{@full}":
+			remove 1 from {sw.arena.%{_arena}%.gametime::seconds}
+			
+			if {sw.arena.%{_arena}%.gametime::seconds} is 0:
+				set {sw.arena.%{_arena}%.gametime::seconds} to 59
+				remove 1 from {sw.arena.%{_arena}%.gametime::event}					
+				subtract 1 from {sw.arena.%{_arena}%.gametime::minutes}	
+				
+			if {sw.arena.%{_arena}%.gametime::event} = 0:
+				if {sw.arena.%{_arena}%.gametime::seconds} <= 1:	
+					set {sw.arena.%{_arena}%.gametime::event.sb} to "{@restarting}"	
+					set {sw.arena.%{_arena}%.gametime::event} to {sw.arena.%{_arena}%.gametime::minutes}
+					invoke "sw.refill" from parameter 1	
+							
+					
+			if {sw.arena.%{_arena}%.gametime::minutes} = 0:
+				if {sw.arena.%{_arena}%.gametime::seconds} <= 1:	
+					if {sw.arena.%{_arena}%.gametime::event.sb} is "{@restarting}":								
+						set {sw.arena.%{_arena}%.gametime::seconds} to 0
+						set {sw.arena.%{_arena}%.gametime::minutes} to 0
+						set {sw.arena.%{_arena}%.gametime::event} to 0
+						spawn 1 enderdragon at {sw.arena.%{_arena}%.center}
+						set name of spawned enderdragon to "{@dragonname}"
+						set {_dragon} to spawned enderdragon
+						add {_dragon} to {sw.arena.%{_arena}%.dragons::*}
+						send {sw.arena.%{_arena}%.players.alive::*} title "{@dragonspawntitle}" for 4 seconds	
+						send "{@prefix} {@dragonspawnmessage}" to {sw.arena.%{_arena}%.players.alive::*}
+						stop loop
+						stop								
+		else:
+			stop loop
+			stop					
+			
+				          
+	
+sub "sw.refill":
+	set {_arena} to parameter 1
+	send {sw.arena.%{_arena}%.players.alive::*} title "{@chestrefilltile}" for 4 seconds	
+	send "{@prefix} {@chestrefill}" to {sw.arena.%{_arena}%.players.alive::*}
+	loop {sw.arena.%{_arena}%.SW.NORMAL::*}:
+		clear inventory of block at loop-value-1
+		loop 15 times:
+			set {_random} to random element out of {SW.OP::*}
+			set {_slot} to a random integer between 0 and 26
+			add {_random} to slot {_slot} of block at loop-value-1
+			wait 1 tick
+	stop
+
+	
+
+							
+sub "sw.resetstats":
+	set {_p} to parameter 1
+	set {_uuid} to uuid of {_p}	
+	set {sw.stats.kills.%{_uuid}%} to 0
+	set {sw.stats.deaths.%{_uuid}%} to 0
+	set {sw.stats.wins.%{_uuid}%} to 0	
+	set {sw.stats.points.%{_uuid}%} to 0		
+	
+sub "sw.spec":
+	set {_p} to parameter 1
+	set {_p2} to parameter 2	
+	set {_uuid} to uuid of {_p}	
+	set {_uuid2} to uuid of {_p2}	
+	invoke "sw.clearplayer" from {_p}
+	hide {_p} from all players
+	set {_p}'s slot 0 to {@teleporteritem} named "{@teleporteritemname}"		
+	set {_p}'s slot 7 to {@playagainitem} named "{@playagainitemname}"						
+	set {_p}'s slot 8 to {@leaveitem} named "{@leaveitemname}"
+	set {_p}'s flight mode to true	
+	if {sw.player.%{_uuid2}%.playing} is true:
+		teleport {_p} to {_p2}
+	else:
+		teleport {_p} to random element out of {sw.arena.%{sw.player.%{_uuid}%.arena}%.players.alive::*}	
+
+	
+sub "sw.refreshmenu":	
+	loop all players:	
+		if inventory name of loop-player-1's current inventory is "{@arenasguiname}":
+			set {_sw.list} to 0	
+			loop {sw.arenas::*}:
+				if {sw.arena.%loop-value-2%.status} is "{@ingame}" or "{@full}" or "{@restarting}":
+					make a gui slot {_sw.list} of loop-player-1 with red clay named "&8 " with lore "&8&l» &7Name&8: &e&l%loop-value-2%||||&8&l» &7Status&8: %{sw.arena.%loop-value-2%.status}%||||&8&l» &7Players&8: &7%{sw.arena.%loop-value-2%.playing}%/%{sw.arena.%loop-value-2%.max}%||||&8&l● &7&lClick to join!" to run loop-player-1 command "sw join %loop-value-2%"
+					add 1 to {_sw.list}
+				else:
+					make a gui slot {_sw.list} of loop-player-1 with green clay named "&8 " with lore "&8&l» &7Name&8: &e&l%loop-value-2%||||&8&l» &7Status&8: %{sw.arena.%loop-value-2%.status}%||||&8&l» &7Players&8: &7%{sw.arena.%loop-value-2%.playing}%/%{sw.arena.%loop-value-2%.max}%||||&8&l● &7&lClick to join!" to run loop-player-1 command "sw join %loop-value-2%"                                          
+					add 1 to {_sw.list}
+			stop	
+
+	
+sub "sw.clearplayer":
+	set {_p} to parameter 1
+	remove REGENERATION, SPEED, FIRE RESISTANCE, POISON, WEAKNESS, INCREASE DAMAGE, SLOW, WATER BREATHING, INVISIBILITY, DAMAGE RESISTANCE and ABSORPTION from {_p}
+	heal {_p}
+	extinguish {_p}
+	set {_p}'s food to 20	
+	clear {_p}'s level
+	clear {_p}'s inventory
+	close {_p}'s inventory
+	set {_p}'s gamemode to survival
+	set {_p}'s flight mode to false
+	
+sub "sw.winner":
+	set {_p} to parameter 1
+	set {_uuid} to uuid of {_p}
+	invoke "sw.summary" from {_p} and {sw.player.%{_uuid}%.arena}
+	invoke "sw.clearplayer" from {_p}
+	send {_p} title "{@winnertitle}" with subtitle "{@winnersubtitle}" for 7 seconds		
+	add 1 to {sw.stats.wins.%{_uuid}%}
+	add {@pointsperwin} to {sw.stats.points.%{_uuid}%}	
+	set {sw.arena.%{sw.player.%{_uuid}%.arena}%.status} to "{@restarting}"		
+	if {@winnerhologram} is true:
+		bind hologram ";ItemStack:diamond_sword;{@winnerhologramtext}" to {_p} for 10 seconds offset by 0.0, 4.0, 0.0
+	loop 10 times:
+		if {sw.player.%{_uuid}%.playing} is true:
+			launch trailing flickering star coloured purple and red fading to yellow at {_p}'s location timed 1
+			wait 10 ticks
+	wait 5 seconds
+	set {_players.total::*} to {sw.arena.%{sw.player.%{_uuid}%.arena}%.players.alive::*} and {sw.arena.%{sw.player.%{_uuid}%.arena}%.players.death::*}
+	loop {_players.total::*}:
+		invoke "sw.clearplayer" from loop-value
+		apply potion of resistance 10 to loop-value for 2 seconds
+		teleport loop-value to {sw.lobby}
+		set {sw.player.%uuid of loop-value%.playing} to false	
+		reveal loop-value from all players
+	set {sw.arena.%{sw.player.%{_uuid}%.arena}%.status} to "{@restarting}"
+	wait 5 ticks
+	invoke "sw.API.arenaReset" from {sw.player.%{_uuid}%.arena}
+	stop
+
+sub "sw.summary":
+	set {_p} to parameter 1	
+	set {_arena} to parameter 2
+	set {_uuid} to uuid of {_p}	
+	loop {sw.gamekills.%{_arena}%::*}:
+		set {_backup::%loop-index%} to loop-value
+	loop 3 times:
+		delete {_first.player}
+		delete {_first.number}
+		loop {_backup::*}:
+			if {_first.player} is not set:
+				set {_first.number} to loop-value-2
+				set {_first.player} to loop-index
+			else:
+				if loop-value-2 > {_first.number}:
+					set {_first.number} to loop-value-2
+					set {_first.player} to loop-index
+		add {_first.number} to {_list::*}
+		add {_first.player} to {_list2::*}
+		delete {_backup::%{_first.player}%}	
+	if {_list::1} is not set:
+		set {_list::1} to 0 
+	if {_list::2} is not set:
+		set {_list::2} to 0 
+	if {_list::3} is not set:
+		set {_list::3} to 0 
+	if {_list2::1} is not set:	
+		set {_list2::1} to "Nobody"
+	if {_list2::2} is not set:	
+		set {_list2::2} to "Nobody"
+	if {_list2::3} is not set:	
+		set {_list2::3} to "Nobody"		
+	set {_players.total::*} to {sw.arena.%{sw.player.%{_uuid}%.arena}%.players.alive::*} and {sw.arena.%{sw.player.%{_uuid}%.arena}%.players.death::*}
+	wait 0.1 seconds
+	send "&a&l■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                            " to {_players.total::*}
+	send "                                                                        " to {_players.total::*}
+	send "                              &8&l● &e&lSky&6&lWars &8&l●                   " to {_players.total::*}
+	send "                                                                        " to {_players.total::*}
+	send "                         &eWinner &f- %colored {_p}'s prefix% &3%{_p}%  " to {_players.total::*}
+	send "                                                                        " to {_players.total::*}
+	send "                      &e&l1st Killer &3%{_list2::1}% &7- %{_list::1}%   " to {_players.total::*}
+	send "                     &6&l2nd Killer &7%{_list2::2}% &7- %{_list::2}%    " to {_players.total::*}
+	send "                      &c&l3rd Killer &7%{_list2::3}% &7- %{_list::3}%   " to {_players.total::*}
+	send "                                                                        " to {_players.total::*}	
+	send "&a&l■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                            " to {_players.total::*}
+		
+		
+		
+sub "sw.checklocation":
+	set {_p} to parameter 1
+	set {_uuid} to uuid of {_p}
+	if {sw.player.%{_uuid}%.playing} is true:
+		if location of {_p} is within {sw.arena.%{sw.player.%{_uuid}%.arena}%.pos.1} to {sw.arena.%{sw.player.%{_uuid}%.arena}%.pos.2}:
+			stop
+		else:
+			if {sw.arena.%{sw.player.%{_uuid}%.arena}%.players.death::*} contains {_p}:
+				teleport {_p} to {sw.arena.%{sw.player.%{_uuid}%.arena}%.center}
+			else:
+				apply potion of instant damage to {_p} for 0.5 seconds
+				if y-coords of {_p} < 50:
+					stop
+				else:
+					message "{@prefix} {@notinarenaregion}" to {_p}
+				
+			
+	
+sub "sw.spawncage":
+	set {_loc} to parameter 1
+	set {_p} to parameter 2	
+	set {_b} to "{@glassid}" parsed as material	
+	loop all blocks in radius 5 around {_loc}:
+		if loop-block is {_b}:
+			set loop-block to air
+	teleport {_p} to {_loc}	
+	set block at block under {_loc} to {_b}
+	set block at block 1 north {_loc} to {_b}
+	set block at block 1 south {_loc} to {_b}
+	set block at block 1 east {_loc} to {_b}
+	set block at block 1 west {_loc} to {_b}
+	set block at block above block 1 north {_loc} to {_b}
+	set block at block above block 1 south {_loc} to {_b}
+	set block at block above block 1 east {_loc} to {_b}
+	set block at block above block 1 west {_loc} to {_b}
+	set block at block 2 above {_loc} to {_b}	
+	teleport {_p} at block 1 above {_p}
+	teleport {_p} at block 1 under {_p}	
+	wait 10 ticks
+	if block at block 2 above {_b} is air:	
+		teleport {_p} at block 1 under {_p}
+		wait 10 ticks
+		teleport {_p} to {_p}
+					
+sub "sw.clearcage":
+	set {_p} to parameter 1
+	set {_uuid} to uuid of {_p}
+	set {_loc} to location of {_p}
+	set {_b} to "{@glassid}" parsed as material	
+	if {sw.arena.%{sw.player.%{_uuid}%.arena}%.status} is "{@waiting}" or "{@starting}" or "{@full}" or "{@ingame}":
+		loop all blocks in radius 5 around {_loc}:
+			if loop-block is {_b}:
+				set loop-block to air
+				
+sub "sw.API.arenaReset":
+	send "{@prefix} &aReseting &e%parameter 1%" to console
+	set {_arena} to parameter 1
+	clear {sw.arena.%{_arena}%.players.death::*}
+	clear {sw.arena.%{_arena}%.players.alive::*}	
+	clear {sw.arena.%{_arena}%.gametime::*}
+	clear {sw.gamekills.%{_arena}%::*}
+	make console execute command "rb rollbackregion %{_arena}% -clearEntities"	
+	wait 10 seconds
+	invoke "sw.chestfill.normal" from parameter 1
+	wait 1 second
+	invoke "sw.chestfill.op" from parameter 1	
+	wait 2 seconds
+	set {sw.arena.%{_arena}%.gametime::minutes} to {@gameminutes}
+	set {sw.arena.%{_arena}%.gametime::seconds} to 60
+	set {sw.arena.%{_arena}%.playing} to 0
+	set {sw.arena.%{_arena}%.seconds} to {@waitingtime}
+	set {sw.arena.%{_arena}%.status} to "{@waiting}"
+	invoke "sw.refreshmenu"
+	send "{@prefix} &e%parameter 1% &areseted!" to console		
+	loop {sw.arena.%{_arena}%.dragons::*}:
+		kill loop-value
+	stop				
+				
+
